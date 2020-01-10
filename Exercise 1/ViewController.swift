@@ -29,20 +29,35 @@ class ViewController: UIViewController {
             self.imageView.frame.origin.y = self.heightofBox - self.imageView.frame.height
             
             
-            let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector (self.swiped))
+let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector (self.swiped))
     swipeRight.direction = UISwipeGestureRecognizer.Direction.right
             self.view.addGestureRecognizer(swipeRight)
             
         }
 }
     @objc func swiped(gesture: UISwipeGestureRecognizer){
-   let swipeGesture = gesture as UISwipeGestureRecognizer
-        UIView.animate(withDuration: 2,animations: {
+     let swipeGesture = gesture as UISwipeGestureRecognizer
+       // UIView.animate(withDuration: 2,animations: {
             
-            self.imageView.frame.origin.x = self.widthofBox - self.imageView.frame.width
-        }){
+          //  self.imageView.frame.origin.x = self.widthofBox - self.imageView.frame.width
+      //  }){
+        
+        UIView.animate(withDuration: 2, animations:{
+            self.imageView.frame.origin.x = self.widthofBox - self.imageView.frame.width}){
             (aman) in
-            UIView.animate(withDuration: 2, animations: <#T##() -> Void#>)
+            UIView.animate(withDuration: 2,animations: {
+                self.imageView.frame.origin.y = 0
+            }){  (aman) in
+                
+                UIView.animate(withDuration: 2, animations: {
+                    self.imageView.frame.origin.x = 0
+                }){ (true) in
+                    UIView.animate(withDuration: 2){
+                        
+                        self.imageView.frame.origin.y = self.heightofBox - self.imageView.frame.height
+                    }
+                }
+                }
         }
         
         
