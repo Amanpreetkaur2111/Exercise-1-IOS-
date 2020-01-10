@@ -10,11 +10,43 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    
+    let heightofBox = UIScreen.main.bounds.size.height
+    let widthofBox = UIScreen.main.bounds.size.width
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-    }
-
+        
+        imageView.frame.origin.x = 0
+        imageView.frame.origin.y = 0
+        
+     let time = heightofBox / 150
+        //let Sheight = UIScreen.main.bounds.size.height
+        
+        UIView.animate(withDuration: TimeInterval(time)){
+            self.imageView.frame.origin.y = self.heightofBox - self.imageView.frame.height
+            
+            
+            let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector (self.swiped))
+    swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+            self.view.addGestureRecognizer(swipeRight)
+            
+        }
+}
+    @objc func swiped(gesture: UISwipeGestureRecognizer){
+   let swipeGesture = gesture as UISwipeGestureRecognizer
+        UIView.animate(withDuration: 2,animations: {
+            
+            self.imageView.frame.origin.x = self.widthofBox - self.imageView.frame.width
+        }){
+            (aman) in
+            UIView.animate(withDuration: 2, animations: <#T##() -> Void#>)
+        }
+        
+        
+       }
 
 }
 
