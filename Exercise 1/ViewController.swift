@@ -42,10 +42,7 @@ let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector (self.
 }
     @objc func swiped(gesture: UISwipeGestureRecognizer){
     let swipeGesture = gesture as UISwipeGestureRecognizer
-       // UIView.animate(withDuration: 2,animations: {
-            
-          //  self.imageView.frame.origin.x = self.widthofBox - self.imageView.frame.width
-      //  }){
+       
         
         UIView.animate(withDuration: 2, animations:{
             self.imageView.frame.origin.x = self.widthofBox - self.imageView.frame.width}){
